@@ -24,6 +24,11 @@ automerge:
   merge_method: squash          # squash | merge | rebase
   require_ci_pass: true         # 必须等 PR 的 CI 全绿
   delete_branch_after: true
+  # fork 上游(HA)天然红、与 PR 无关的检查，不纳入全绿判定
+  ignore_checks:
+    - Check other linters
+    - Prepare dependencies
+    - other linters
   # 限速闸门：避免本体侧短时间涌入过多合并而被风控
   rate_limit:
     max_merges_per_hour: 12
